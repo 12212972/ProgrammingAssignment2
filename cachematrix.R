@@ -33,26 +33,28 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ###########################
 
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(x, ...)  {
     ## Return a matrix that is the inverse of 'x'
     flag <- TRUE
     
     if (!is.null(cache$y)){
         for (i in length(cache$y)){
-            if(x[i] - cache$y[i] != 0) {
+            if (is.na(x[i]) == TRUE || x[i] - cache$y[i] != 0) {
                 flag <- FALSE
                 break
+            }else{
+                print("getting cached data...")
+                return(cache$x)
             }
-        }
-        print("getting cached data...")
-        return(cache$x)
-    }
         
-    print("computing...")
-    return(solve(x))
+        }
+    } 
+
+        print("computing...")
+        return(solve(x))    
     
 }
+  
 
-    
 
 
