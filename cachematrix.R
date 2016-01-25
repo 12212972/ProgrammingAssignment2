@@ -3,6 +3,9 @@
 
 ## Write a short comment describing this function
 
+## The function calculates inverse matrix of the input 
+## and put the result into a list named "cachematrix".
+## The "cachematrix" can save up to 11 inverse matrices.
 
 makeCacheMatrix <- function(x = matrix()) {
   tempcache <<- list(set = x, get = solve(x))
@@ -22,6 +25,9 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## Write a short comment describing this function
 
+## This function compares input matrix with the one in cache.
+## If the same matrix is found, it returns corresponding cached inverse matrix,
+## otherwise, calculation with solve() is conducted.
 
 cacheSolve <- function(y, ...) {
   
@@ -32,8 +38,8 @@ cacheSolve <- function(y, ...) {
         next
     }
     
-    else if (all(as.vector(val) == as.vector(y))) {
-        # matrix identity ch
+    else if (all(as.vector(val) == as.vector(y))) {          # check if input matrix is the same as the one in the cache
+        
         message("getting cached data")
         ans <- cachematrix[[i]]$get
         return(ans)
